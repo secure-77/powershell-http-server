@@ -1,3 +1,4 @@
+Add-Type -AssemblyName System.Web
 $httpsrvlsnr = New-Object System.Net.HttpListener;
 $httpsrvlsnr.Prefixes.Add("http://+:8088/");
 $httpsrvlsnr.Start();
