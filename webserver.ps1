@@ -21,13 +21,14 @@ function List-Files($dir) {
    
         foreach ($item in $folderContent)
         {
+            $urlPath= [System.Web.HttpUtility]::UrlEncode($item.FullName)
             if (Test-Path -Path $item.FullName -PathType Container)
             {
-                $outPut +=  "<span style=""display: inline-block; width: 50px;"">"+$item.Mode+"</span><span style=""display: inline-block; width: 150px;"">"+$item.LastWriteTime+"</span><span style=""display: inline-block; width: 120px;"">"+$item.Length+"</span><span><a href='/?folder=$($item.FullName)'>"+$item.Name+"</a></span><br>"
+                $outPut +=  "<span style=""display: inline-block; width: 50px;"">"+$item.Mode+"</span><span style=""display: inline-block; width: 150px;"">"+$item.LastWriteTime+"</span><span style=""display: inline-block; width: 120px;"">"+$item.Length+"</span><span><a href='/?folder=$($urlPath)'>"+$item.Name+"</a></span><br>"
             }
             else {
     
-                $outPut +=  "<span style=""display: inline-block; width: 50px;"">"+$item.Mode+"</span><span style=""display: inline-block; width: 150px;"">"+$item.LastWriteTime+"</span><span style=""display: inline-block; width: 120px;"">"+$item.Length+"</span><span><a href='?file=$($item.FullName)'>"+$item.Name+"</a></span> - <span><a href='?dl=$($item.FullName)'>(Download)</a></span><br>"
+                $outPut +=  "<span style=""display: inline-block; width: 50px;"">"+$item.Mode+"</span><span style=""display: inline-block; width: 150px;"">"+$item.LastWriteTime+"</span><span style=""display: inline-block; width: 120px;"">"+$item.Length+"</span><span><a href='?file=$($urlPath)'>"+$item.Name+"</a></span> - <span><a href='?dl=$($urlPath)'>(Download)</a></span><br>"
             }
         }
         
