@@ -6,6 +6,9 @@
 
 ```powershell
 .\webserver.ps1
+
+# start privileged in the current directory
+start-process powershell -argumentList "-ep bypass -NoExit -c cd $($PWD); .\webserver.ps1" -verb runas
 ```
 
 - server listen on all interfaces so you need admin permissions to run the script
