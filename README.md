@@ -1,5 +1,5 @@
 # powershell-http-server
- simple powershell http server, dont use in production!
+ simple powershell http server
 
 
  start with
